@@ -207,7 +207,7 @@ if __name__ == '__main__':
             Rsq = Coefs.r2(YCropped, YModel[start:])
             IKA = Coefs.akaike(YCropped, S, p, q)
             if collectData:
-                collectionS[p-1, q-1, 0] = Rsq
+                collectionS[p-1, q-1, 0] = S
                 collectionRSq[p-1, q-1, 0] = Rsq
                 collectionIKA[p-1, q-1, 0] = IKA
             print(f'S = {round(S, 6)}')
@@ -229,7 +229,7 @@ if __name__ == '__main__':
             Rsq = Coefs.r2(YCropped, YModel[start:])
             IKA = Coefs.akaike(YCropped, S, p, q)
             if collectData:
-                collectionS[p-1, q-1, 1] = Rsq
+                collectionS[p-1, q-1, 1] = S
                 collectionRSq[p-1, q-1, 1] = Rsq
                 collectionIKA[p-1, q-1, 1] = IKA
             print(f'S = {round(S, 6)}')
@@ -267,6 +267,8 @@ if __name__ == '__main__':
             try:
                 axs.plot(np.ones_like(thetaRLSStat[:, k])*a[k], label='Реальне значення')
             except NameError:
+                pass
+            except IndexError:
                 pass
             axs.set_title(f'a{k}')
             axs.legend()
